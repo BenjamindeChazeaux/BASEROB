@@ -1,0 +1,62 @@
+<div class="dashboard-container">
+  <!-- Sidebar -->
+  <%= render 'shared/sidebar' %>
+
+  <!-- Main Content -->
+  <div class="main-content crawler-content">
+    <div class="crawler-hero">
+      <h1>Turn your websites into LLM-Ready data</h1>
+      <p class="subtitle">Power your AI apps with clean data crawled from any website. It's also open-source.</p>
+      
+      <div class="url-input-container">
+        <div class="url-input-wrapper">
+          <input type="url" 
+                 placeholder="https://example.com" 
+                 class="url-input"
+                 aria-label="Website URL">
+          <button class="url-submit">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <button class="start-button">
+        Start for free (500 credits)
+      </button>
+
+      <div class="powered-by">
+        <span>A PRODUCT BY</span>
+        <div class="company-logo">
+          <span class="dot"></span>
+          <span class="company-name">Baserob</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="features-section">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-spider"></i>
+        </div>
+        <h3>Crawl, Scrape, Clean</h3>
+        <p>We crawl all accessible subpages and give you clean, structured data.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-robot"></i>
+        </div>
+        <h3>AI-Ready Format</h3>
+        <p>Get your data in formats optimized for AI and LLM processing.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <h3>Developer Friendly</h3>
+        <p>Simple API integration and comprehensive documentation.</p>
+      </div>
+    </div>
+  </div>
+</div>

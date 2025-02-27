@@ -1,0 +1,29 @@
+<div class="sidebar">
+  <div class="logo">
+    <span>Baserob</span>
+  </div>
+  <div class="search-container">
+    <div class="search-bar sidebar-search">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search..." class="search-input" aria-label="Search">
+      <span class="keyboard-shortcut">⌘ K</span>
+    </div>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="<%= home_welcome_path %>" class="<%= current_page?(home_welcome_path) ? 'active' : '' %>">
+      <i class="fas fa-home"></i><span>Home</span>
+    </a>
+    <a href="<%= ai_analytics_path %>" class="<%= current_page?(ai_analytics_path) ? 'active' : '' %>">
+      <i class="fas fa-robot"></i><span>AI Analytics</span>
+    </a>
+    <a href="<%= website_crawling_index_path %>" class="<%= current_page?(website_crawling_index_path) ? 'active' : '' %>">
+      <i class="fas fa-spider"></i><span>Web Crawler</span>
+    </a>
+    <a href="<%= geo_scoring_index_path %>" class="<%= current_page?(geo_scoring_index_path) ? 'active' : '' %>">
+      <i class="fas fa-globe"></i><span>GEO Scoring</span>
+    </a>
+    <a href="<%= settings_path %>" class="<%= current_page?(settings_path) ? 'active' : '' %>">
+      <i class="fas fa-cog"></i><span>Settings</span>
+    </a>
+  </nav>
+</div> 

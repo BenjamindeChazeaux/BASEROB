@@ -1,0 +1,164 @@
+<div class="dashboard-container">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">
+      <span>Baserob</span>
+    </div>
+    <div class="search-container">
+      <div class="search-bar sidebar-search">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search..." class="search-input" aria-label="Search">
+        <span class="keyboard-shortcut">⌘ K</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="<%= home_path %>" class="active"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="<%= ai_analytics_path %>"><i class="fas fa-robot"></i><span>AI Analytics</span></a>
+      <a href="#"><i class="fas fa-globe"></i><span>GEO Scoring</span></a>
+      <a href="#"><i class="fas fa-spider"></i><span>Web Crawler</span></a>
+      <a href="#"><i class="fas fa-cog"></i><span>Settings</span></a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <%= render 'shared/sidebar' %>
+  <div class="main-content">
+    <!-- Header -->
+    <header class="dashboard-header">
+      <div class="date-welcome">
+        <p class="date"><%= Date.today.strftime("%-d %B, %Y") %></p>
+        <h1>Welcome back, Alex!</h1>
+      </div>
+      <div class="search-bar main-search" style="width: 100%;">
+        <i class="fas fa-search" style="margin-right: 8px;"></i>
+        <input type="text" placeholder="Search for actions, models, data sources, categories..." style=margin-right: 8px;">
+        <span class="keyboard-shortcut">⌘ K</span>
+      </div>
+    </header>
+
+  <div class="container" style="display: flex; overflow-x: auto;">
+    <!-- Quick Actions Grid -->
+    <div class="quick-actions-grid" style="display: flex; flex-wrap: wrap; gap: 16px;">
+      <!-- Quick Start Card -->
+      <div class="action-card quick-start-card" style="flex: 1 1 calc(50% - 16px);">
+        <div class="card-content">
+          <div class="card-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Quick start</h3>
+          <p>Generate models in 1 click from your own data</p>
+          <a href="#" class="action-button">
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Tutorial Card -->
+      <div class="action-card tutorial-card" style="flex: 1 1 calc(50% - 16px);">
+        <div class="card-content">
+          <div class="video-preview">
+            <i class="fas fa-play-circle"></i>
+          </div>
+          <div class="author">
+            <img src="https://f.hellowork.com/blogdumoderateur/2020/04/formation-montage-video-1200x675.jpg" alt="Taimur" class="avatar">
+            <span>Taimur</span>
+            <span class="video-count"><i class="fas fa-play"></i> 4</span>
+          </div>
+          <h3>Baserob 101</h3>
+          <p>Learn the basics with a video series from our founder</p>
+        </div>
+      </div>
+    </div>
+  <div class="container">
+    <!-- Help Section -->
+    <div class="help-section" style="display: flex; flex-wrap: wrap; gap: 16px;">
+      <div class="consultation-card">
+        <div class="card-content">
+          <div class="card-icon">
+            <i class="fas fa-comments"></i>
+          </div>
+          <h3>Book a consultation</h3>
+          <p>Get help from the Baserob team</p>
+        </div>
+
+      <div class="help-options" style="flex: 1 1 calc(50% - 16px); display: flex; gap: 16px;">
+        <div class="help-card" style="flex: 1;">
+          <div class="card-icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <h3>Docs</h3>
+        </div>
+        <div class="help-card" style="flex: 1;">
+          <div class="card-icon">
+            <i class="fas fa-comment-dots"></i>
+          </div>
+          <h3>Live chat</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+    <!-- Templates Section -->
+    <div class="models-section">
+      <div class="section-header">
+        <h2>Templates</h2>
+        <p>Manage and access your templates quickly</p>
+      </div>
+      <div class="models-actions">
+        </div>
+      <div class="models-list">
+        <div class="model-item">
+          <div class="model-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="model-info">
+            <h4>Stripe MRR Report</h4>
+            <p>6s ago</p>
+          </div>
+        </div>
+        <div class="model-item">
+          <div class="model-icon"><i class="fas fa-chart-bar"></i></div>
+          <div class="model-info">
+            <h4>ASLMobbin Inc.</h4>
+            <p>1d ago</p>
+          </div>
+        </div>
+        <div class="model-item">
+          <div class="model-icon"><i class="fas fa-chart-pie"></i></div>
+          <div class="model-info">
+            <h4>Stripe</h4>
+            <p>4d ago</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Inclusion de Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('visitsChart').getContext('2d');
+    const data = <%= raw @visit_data.to_json %>;
+    
+    new Chart(ctx, {
+      type: 'pie',
+      data: data,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: 'Human vs AI bot'
+          }
+        }
+      }
+    });
+  });
+</script> 
+</div> 
+

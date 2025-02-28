@@ -3,7 +3,7 @@
   <%= render 'shared/sidebar' %>
 
   <!-- Main Content -->
-  <div class="main-content">
+  <div class="main-content" data-controller="charts">
     <!-- Header -->
     <header class="dashboard-header">
       <div class="date-welcome">
@@ -113,51 +113,160 @@
       </div>
 
       <!-- Performance Chart -->
-      <div class="chart-container" style="background: white; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: var(--card-shadow);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-          <h2 style="font-size: 16px; font-weight: 600;">Performance Over Time</h2>
-          <select class="metric-select" style="padding: 8px 12px; border-radius: 8px; border: 1px solid var(--card-border); background: white;">
-            <option>Visibility Score</option>
-            <option>Average Position</option>
-            <option>Detection Rate</option>
-          </select>
+      <div class="chart-card large">
+        <div class="chart-header">
+          <h2>Performance Over Time</h2>
         </div>
-        <canvas id="performanceChart" height="300"></canvas>
+        <div class="chart-container short">
+          <canvas id="performanceChart"></canvas>
+        </div>
       </div>
 
-      <!-- Competitors Table -->
-      <div class="competitors-table" style="background: white; border-radius: 12px; padding: 24px; box-shadow: var(--card-shadow);">
-        <h2 style="font-size: 16px; font-weight: 600; margin-bottom: 20px;">Competitor Analysis</h2>
-        <table style="width: 100%; border-collapse: collapse;">
-          <thead>
-            <tr style="border-bottom: 1px solid var(--card-border);">
-              <th style="text-align: left; padding: 12px 16px; font-size: 13px; color: var(--text-secondary);">Competitor</th>
-              <th style="text-align: right; padding: 12px 16px; font-size: 13px; color: var(--text-secondary);">Visibility Score</th>
-              <th style="text-align: right; padding: 12px 16px; font-size: 13px; color: var(--text-secondary);">Change</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom: 1px solid var(--card-border);">
-              <td style="padding: 12px 16px;">Your Company</td>
-              <td style="text-align: right; font-weight: 600;">87.3%</td>
-              <td style="text-align: right; color: #F44336;">-0.2%</td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--card-border);">
-              <td style="padding: 12px 16px;">Competitor A</td>
-              <td style="text-align: right; font-weight: 600;">95.2%</td>
-              <td style="text-align: right; color: #4CAF50;">+0.5%</td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--card-border);">
-              <td style="padding: 12px 16px;">Competitor B</td>
-              <td style="text-align: right; font-weight: 600;">90.9%</td>
-              <td style="text-align: right;">0.0%</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- AI Search Scoring Table -->
+      <div class="scoring-table-card">
+        <div class="table-header">
+          <h2>Top AI Search Scoring</h2>
+        </div>
+        <div class="scoring-grid">
+          <div class="scoring-card">
+            <div class="provider-logo">
+              <img src="/assets/openai-logo.png" alt="OpenAI">
+              <h3>OpenAI</h3>
+            </div>
+            <div class="score">87</div>
+            <div class="growth positive">
+              <i class="fas fa-arrow-up"></i>
+              <span>12.3%</span>
+            </div>
+          </div>
+
+          <div class="scoring-card">
+            <div class="provider-logo">
+              <img src="/assets/anthropic-logo.png" alt="Anthropic">
+              <h3>Anthropic</h3>
+            </div>
+            <div class="score">92</div>
+            <div class="growth positive">
+              <i class="fas fa-arrow-up"></i>
+              <span>15.7%</span>
+            </div>
+          </div>
+
+          <div class="scoring-card">
+            <div class="provider-logo">
+              <img src="/assets/mistral-logo.png" alt="Mistral">
+              <h3>Mistral</h3>
+            </div>
+            <div class="score">78</div>
+            <div class="growth negative">
+              <i class="fas fa-arrow-down"></i>
+              <span>3.2%</span>
+            </div>
+          </div>
+
+          <div class="scoring-card">
+            <div class="provider-logo">
+              <img src="/assets/perplexity-logo.png" alt="Perplexity">
+              <h3>Perplexity</h3>
+            </div>
+            <div class="score">85</div>
+            <div class="growth positive">
+              <i class="fas fa-arrow-up"></i>
+              <span>8.9%</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<style>
+/* Réduire la hauteur du graphique de performance */
+.chart-container.short {
+  height: 300px;
+  min-height: 300px;
+}
+
+/* Styles pour le tableau de scoring */
+.scoring-table-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  box-shadow: var(--card-shadow);
+}
+
+.scoring-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.scoring-card {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.scoring-card:hover {
+  transform: translateY(-2px);
+}
+
+.provider-logo {
+  margin-bottom: 1rem;
+}
+
+.provider-logo img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 0.5rem;
+}
+
+.provider-logo h3 {
+  font-size: 1rem;
+  color: #1a202c;
+  margin: 0;
+}
+
+.score {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0.5rem 0;
+}
+
+.growth {
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.growth.positive {
+  color: #22c55e;
+}
+
+.growth.negative {
+  color: #ef4444;
+}
+
+@media (max-width: 1024px) {
+  .scoring-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .scoring-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

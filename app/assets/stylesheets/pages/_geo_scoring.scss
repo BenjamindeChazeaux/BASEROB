@@ -1,0 +1,77 @@
+.scoring-table-card {
+  background: $card-bg;
+  border-radius: $border-radius-lg;
+  padding: $spacing-lg;
+  margin-top: $spacing-lg;
+  box-shadow: $card-shadow;
+}
+
+.scoring-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-lg;
+  margin-top: $spacing-md;
+}
+
+.scoring-card {
+  background: #f8fafc;
+  border-radius: $border-radius-md;
+  padding: $spacing-lg;
+  text-align: center;
+  transition: transform 0.2s;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+  
+  .provider-logo {
+    margin-bottom: $spacing-md;
+    
+    img {
+      width: 48px;
+      height: 48px;
+      margin-bottom: $spacing-xs;
+    }
+    
+    h3 {
+      font-size: $font-size-md;
+      color: $text-primary;
+      margin: 0;
+    }
+  }
+  
+  .score {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: $text-primary;
+    margin: $spacing-xs 0;
+  }
+  
+  .growth {
+    font-size: $font-size-sm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-xs;
+    
+    &.positive {
+      color: $success-color;
+    }
+    
+    &.negative {
+      color: $danger-color;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-lg) {
+  .scoring-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .scoring-grid {
+    grid-template-columns: 1fr;
+  }
+} 

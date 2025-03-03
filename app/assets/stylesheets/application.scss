@@ -1,0 +1,33 @@
+// Configuration globale
+@import "config";
+
+// Base
+@import "base/reset";
+@import "base/typography";
+@import "base/utilities";
+
+// Components
+@import "components/buttons";
+@import "components/cards";
+@import "components/charts";
+@import "components/forms";
+@import "components/modals";
+@import "components/navigation";
+@import "components/sidebar";
+@import "components/tables";
+
+// Layouts
+@import "layouts/dashboard";
+@import "layouts/header";
+@import "layouts/footer";
+
+// Pages
+@import "pages/home";
+@import "pages/ai_analytics";
+@import "pages/geo_scoring";
+@import "pages/website_crawling";
+@import "pages/settings";
+
+// Responsive
+@import "responsive/mobile";
+@import "responsive/tablet"; 

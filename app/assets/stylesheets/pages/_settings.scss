@@ -1,0 +1,101 @@
+.settings-container {
+  max-width: 800px;
+  margin: 0 auto;
+  
+  .settings-header {
+    margin-bottom: $spacing-xl;
+    
+    h1 {
+      margin-bottom: $spacing-sm;
+    }
+    
+    p {
+      color: $text-secondary;
+    }
+  }
+  
+  .settings-section {
+    background: white;
+    border-radius: $border-radius-lg;
+    padding: $spacing-lg;
+    box-shadow: $card-shadow;
+    margin-bottom: $spacing-lg;
+    
+    h2 {
+      margin-bottom: $spacing-lg;
+      padding-bottom: $spacing-sm;
+      border-bottom: 1px solid $card-border;
+    }
+  }
+  
+  .settings-form {
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: $spacing-lg;
+      margin-bottom: $spacing-lg;
+      align-items: center;
+      
+      @media (max-width: $breakpoint-md) {
+        grid-template-columns: 1fr;
+        gap: $spacing-sm;
+      }
+      
+      label {
+        font-weight: 500;
+      }
+    }
+    
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: $spacing-md;
+      margin-top: $spacing-xl;
+    }
+  }
+  
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    
+    input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      
+      &:checked + .slider {
+        background-color: $primary-color;
+      }
+      
+      &:checked + .slider:before {
+        transform: translateX(26px);
+      }
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+      
+      &:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+      }
+    }
+  }
+} 

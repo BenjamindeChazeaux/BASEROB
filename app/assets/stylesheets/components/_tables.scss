@@ -1,0 +1,63 @@
+.table-container {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  
+  th {
+    text-align: left;
+    padding: $spacing-md;
+    font-weight: 500;
+    color: $text-secondary;
+    border-bottom: 1px solid #e1e1e1;
+  }
+  
+  td {
+    padding: $spacing-md;
+    border-bottom: 1px solid #e1e1e1;
+  }
+  
+  tr:hover {
+    background-color: rgba($primary-color, 0.02);
+  }
+  
+  .url-cell {
+    font-family: monospace;
+    color: $secondary-color;
+  }
+  
+  .status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    
+    &.pending {
+      background: #FEF3C7;
+      color: #D97706;
+    }
+    
+    &.active {
+      background: #DCFCE7;
+      color: #22C55E;
+    }
+    
+    &.error {
+      background: #FEE2E2;
+      color: #EF4444;
+    }
+  }
+  
+  .action-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $text-secondary;
+    
+    &:hover {
+      color: $primary-color;
+    }
+  }
+} 

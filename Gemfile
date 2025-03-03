@@ -67,3 +67,6 @@ end
 gem 'sass-rails'
 gem 'animate.css-rails'
 gem 'hover-rails'
+
+# Ajoutez ces gems s'ils ne sont pas déjà présents
+gem 'sassc-rails'

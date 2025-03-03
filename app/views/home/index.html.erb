@@ -1,10 +1,13 @@
-  <div data-controller="dashboard" data-action="click->home#welcome">
-  <div class="navbar">
-    <div class="logo">
-      <span class="dot"></span>
-      <span>Baserob</span>
+<div class="home-container">
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="nav-left">
+      <div class="logo">
+        <span class="dot"></span>
+        <span>Baserob</span>
+      </div>
     </div>
-    <nav>
+    <div class="nav-center">
       <a href="#services">services</a>
       <a href="#process">process</a>
       <a href="#team">team</a>
@@ -12,65 +15,210 @@
       <a href="#reviews">reviews</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">contact</a>
-    </nav>
-    <a href="#" class="get-template">Get this template</a>
-  </div>
+    </div>
+    <div class="nav-right">
+      <a href="<%= home_welcome_path %>" class="get-started">Get started</a>
+    </div>
+  </nav>
 
-  <div class="hero">
+  <!-- Hero Section -->
+  <main class="hero-section">
+    <div class="gradient-bg"></div>
     <div class="hero-content">
-      <span class="dot"></span>
-      <h1>Baserob<span class="dot-title">.</span></h1>
-      <p>We develop custom AI solutions for innovative companies.</p>
-      <div class="hero-buttons">
-        <%= button_to 'Get Started', home_welcome_path(get_started: true), method: :get, class: 'btn-primary' %>
+      <h1>Baserob<span class="dot-accent">.</span></h1>
+      <div class="line" style="width: 100%; height: 2px; background-color: white; margin: 0 auto;"></div>
+      <p class="hero-subtitle">We develop custom AI solutions for innovative companies.</p>
+      <div class="cta-buttons">
+        <a href="<%= home_welcome_path %>" class="btn-primary">
+          Get started
+          <i class="fas fa-arrow-right"></i>
+        </a>
       </div>
     </div>
-  </div>
+  </main>
 </div>
 
-<div class="bg-white overflow-hidden shadow rounded-lg">
-  <div class="px-4 py-5 sm:p-6">
-    <div class="text-center">
-      <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-        Welcome to our application
-      </h1>
-      <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-        Start your journey with us today and discover all the features we have to offer.
-      </p>
-      <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
-        <%= button_to 'Get Started', root_path(get_started: true), method: :get, class: 'w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10' %>
-      </div>
-    </div>
-  </div>
-</div>
+<style>
+:root {
+  --primary-color: #333333;
+  --text-color: #1A1A1A;
+  --bg-color: #000000;
+  --accent-blue: #007AFF;
+  --nav-height: 80px;
+}
 
-<div class="mt-10">
-  <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-    <div class="bg-white overflow-hidden shadow rounded-lg">
-      <div class="px-4 py-5 sm:p-6">
-        <h3 class="text-lg font-medium text-gray-900">Feature 1</h3>
-        <p class="mt-2 text-sm text-gray-500">
-          Description of the first feature of your application.
-        </p>
-      </div>
-    </div>
+.home-container {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
 
-    <div class="bg-white overflow-hidden shadow rounded-lg">
-      <div class="px-4 py-5 sm:p-6">
-        <h3 class="text-lg font-medium text-gray-900">Feature 2</h3>
-        <p class="mt-2 text-sm text-gray-500">
-          Description of the second feature of your application.
-        </p>
-      </div>
-    </div>
+/* Navigation */
+.main-nav {
+  height: var(--nav-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 48px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
 
-    <div class="bg-white overflow-hidden shadow rounded-lg">
-      <div class="px-4 py-5 sm:p-6">
-        <h3 class="text-lg font-medium text-gray-900">Feature 3</h3>
-        <p class="mt-2 text-sm text-gray-500">
-          Description of the third feature of your application.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
+.nav-left .logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo .dot {
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+}
+
+.logo span {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: white;
+}
+
+.nav-center {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-center a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-transform: lowercase;
+  transition: color 0.3s ease;
+}
+
+.nav-center a:hover {
+  color: white;
+}
+
+.get-started {
+  padding: 8px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.get-started:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Hero Section */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  position: relative;
+}
+
+.gradient-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(0, 122, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 800px;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 6rem;
+  font-weight: 500;
+  margin-bottom: 24px;
+  line-height: 1.1;
+}
+
+.dot-accent {
+  color: var(--accent-blue);
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 48px;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 12px 32px;
+  border-radius: 24px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: white;
+  color: black;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-center {
+    display: none;
+  }
+
+  .hero-content h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+}
+</style>

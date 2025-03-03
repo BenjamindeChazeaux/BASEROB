@@ -1,0 +1,116 @@
+@import "../config";
+
+.chart-container {
+  min-height: 400px;
+  width: 100%;
+  position: relative;
+  padding: $spacing-md;
+  
+  &.short {
+    height: 300px;
+    min-height: 300px;
+  }
+}
+
+.chart-card {
+  background: $card-bg;
+  border-radius: $border-radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $card-shadow;
+  margin-bottom: $spacing-lg;
+  
+  &.large {
+    grid-column: span 2;
+  }
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-lg;
+  padding: $spacing-md;
+  background: white;
+  border-radius: $border-radius-md;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  
+  h2 {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $text-primary;
+  }
+}
+
+.chart-filters {
+  display: flex;
+  align-items: center;
+  
+  .filters-container {
+    display: flex;
+    gap: $spacing-md;
+    align-items: center;
+  }
+  
+  .filter-group {
+    position: relative;
+  }
+  
+  .filter-select {
+    min-width: 160px;
+    height: 36px;
+    padding: 0 $spacing-md;
+    border: 1px solid #e2e8f0;
+    border-radius: $border-radius-sm;
+    background-color: white;
+    color: $text-primary;
+    font-size: $font-size-sm;
+    cursor: pointer;
+    transition: all 0.2s;
+    
+    &:hover {
+      border-color: #cbd5e0;
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: $secondary-color;
+      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+    }
+  }
+}
+
+.charts-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-xl;
+}
+
+@media (max-width: $breakpoint-md) {
+  .charts-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .chart-card.large {
+    grid-column: span 1;
+  }
+  
+  .chart-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-md;
+  }
+  
+  .chart-filters {
+    width: 100%;
+    
+    .filters-container {
+      flex-direction: column;
+      width: 100%;
+    }
+    
+    .filter-select {
+      width: 100%;
+    }
+  }
+} 

@@ -1,29 +1,101 @@
+<%# 
+  Barre latérale principale de l'application
+  
+  Cette barre latérale contient les liens de navigation principaux et les sous-menus.
+  Elle est incluse dans toutes les pages du tableau de bord.
+%>
 <div class="sidebar">
   <div class="logo">
+    <div class="dot"></div>
     <span>Baserob</span>
   </div>
-  <div class="search-container">
-    <div class="search-bar sidebar-search">
-      <i class="fas fa-search"></i>
-      <input type="text" placeholder="Search..." class="search-input" aria-label="Search">
-      <span class="keyboard-shortcut">⌘ K</span>
-    </div>
-  </div>
+  
   <nav class="sidebar-nav">
     <a href="<%= home_welcome_path %>" class="<%= current_page?(home_welcome_path) ? 'active' : '' %>">
-      <i class="fas fa-home"></i><span>Home</span>
+      <i class="fi fi-tr-house-window"></i><span>Home</span>
     </a>
+    
+    <div class="nav-item-with-submenu">
+      <a href="#" class="<%= current_page?(ai_dashboards_path) || current_page?(dashboard1_path) || current_page?(dashboard2_path) || current_page?(dashboard3_path) ? 'active' : '' %>" data-action="click->sidebar#toggleSubmenu" data-sidebar-submenu-id="dashboards-submenu">
+        <i class="fi fi-tr-dashboard"></i><span>AI Dashboards</span>
+        <i class="fas fa-chevron-down submenu-toggle" aria-hidden="true"></i>
+      </a>
+      <div class="submenu" id="dashboards-submenu">
+        <a href="<%= ai_dashboards_path %>" class="<%= current_page?(ai_dashboards_path) ? 'active' : '' %>">
+          <span>Overview</span>
+        </a>
+        <a href="<%= dashboard1_path %>" class="<%= current_page?(dashboard1_path) ? 'active' : '' %>">
+          <span>Dashboard 1</span>
+        </a>
+        <a href="<%= dashboard2_path %>" class="<%= current_page?(dashboard2_path) ? 'active' : '' %>">
+          <span>Dashboard 2</span>
+        </a>
+        <a href="<%= dashboard3_path %>" class="<%= current_page?(dashboard3_path) ? 'active' : '' %>">
+          <span>Dashboard 3</span>
+        </a>
+      </div>
+    </div>
+    
     <a href="<%= ai_analytics_path %>" class="<%= current_page?(ai_analytics_path) ? 'active' : '' %>">
-      <i class="fas fa-robot"></i><span>AI Analytics</span>
+      <i class="fi fi-tr-chart-network"></i><span>AI Analytics</span>
     </a>
-    <a href="<%= website_crawling_index_path %>" class="<%= current_page?(website_crawling_index_path) ? 'active' : '' %>">
-      <i class="fas fa-spider"></i><span>Web Crawler</span>
+    
+    <a href="<%= geo_scoring_path %>" class="<%= current_page?(geo_scoring_path) ? 'active' : '' %>">
+      <i class="fi fi-tr-pan"></i><span>Performance</span>
     </a>
-    <a href="<%= geo_scoring_index_path %>" class="<%= current_page?(geo_scoring_index_path) ? 'active' : '' %>">
-      <i class="fas fa-globe"></i><span>GEO Scoring</span>
+    
+    <div class="nav-item-with-submenu">
+      <a href="#" class="<%= current_page?(website_crawling_index_path) || current_page?(robots_generator_path) || current_page?(llm_ready_data_path) || current_page?(ai_optimization_agent_path) ? 'active' : '' %>" data-action="click->sidebar#toggleSubmenu" data-sidebar-submenu-id="site-optimization-submenu">
+        <i class="fi fi-tr-it-alt"></i><span>Site Optimization</span>
+        <i class="fas fa-chevron-down submenu-toggle" aria-hidden="true"></i>
+      </a>
+      <div class="submenu" id="site-optimization-submenu">
+        <a href="<%= robots_generator_path %>" class="<%= current_page?(robots_generator_path) ? 'active' : '' %>">
+          <span>Robots Generator</span>
+        </a>
+        <a href="<%= llm_ready_data_path %>" class="<%= current_page?(llm_ready_data_path) ? 'active' : '' %>">
+          <span>LLM Ready Data</span>
+        </a>
+        <a href="<%= ai_optimization_agent_path %>" class="<%= current_page?(ai_optimization_agent_path) ? 'active' : '' %>">
+          <span>AI Optimization Agent</span>
+        </a>
+      </div>
+    </div>
+    
+    <a href="<%= support_resources_path %>" class="<%= current_page?(support_resources_path) ? 'active' : '' %>">
+      <i class="fi fi-tr-onboarding"></i><span>Resources</span>
     </a>
+    
     <a href="<%= settings_path %>" class="<%= current_page?(settings_path) ? 'active' : '' %>">
-      <i class="fas fa-cog"></i><span>Settings</span>
+      <i class="fi fi-tr-customization-cogwheel"></i><span>Settings</span>
     </a>
   </nav>
-</div> 
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Masquer tous les sous-menus au chargement
+  document.querySelectorAll('.submenu').forEach(submenu => {
+    submenu.style.display = "none";
+  });
+  
+  // Ajouter des écouteurs pour les liens avec sous-menus
+  document.querySelectorAll('.nav-item-with-submenu > a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const submenuId = this.dataset.sidebarSubmenuId;
+      const submenu = document.getElementById(submenuId);
+      
+      if (submenu) {
+        if (submenu.style.display === "none" || submenu.style.display === "") {
+          submenu.style.display = "block";
+          this.classList.add('active-parent');
+        } else {
+          submenu.style.display = "none";
+          this.classList.remove('active-parent');
+        }
+      }
+    });
+  });
+});
+</script> 
